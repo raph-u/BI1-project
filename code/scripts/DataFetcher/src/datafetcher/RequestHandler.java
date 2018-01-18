@@ -1,23 +1,28 @@
 /*
- * Fetches data by sending HTTP requests to The Movie DB API (https://www.themoviedb.org/documentation/api)
+ * Fetches data by sending HTTP requests to The Movie DB API (https://developers.themoviedb.org)
+ * The first URL parameter will always be the api key
  */
 package datafetcher;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Raph
  */
 public class RequestHandler {
+    private static String mainEndPoint = "https://api.themoviedb.org/3/discover/movie";
+    private static String yearParam = "&primary_release_date.gte=";
+    
     /** 
      * Fetches the apiKey from a text file located at projectFolder/apiKey.txt
      * 
@@ -42,16 +47,26 @@ public class RequestHandler {
     /** 
      * Performs a POST request to the specified URL
      *  
-     * @param URL a string pointing to the API endpoint holding the data that will be fetched
+     * @param params a string array of parameter prepended with "&". e.g. "&page=12"
      * 
-     * @return  A JSON String representation of all movies from the specified year
+     * @return  A JSON String representation of the data targeted by the specified parameters
      */
-    public static String executePost(String URL) throws IOException {
+    public static String executePost(String[] params) throws IOException {
         // Get the API key
         String apiKey = getApiKey();
         
-        // Build a URL object with the api key and open a connection
-        URL targetUrl = new URL(URL + "?api_key=" + apiKey);
+        String completeURL = mainEndPoint + "?api_key=" + apiKey;
+        
+        // Append request parameters to the final URL
+        for (String param: params) {
+            completeURL += param;
+        }
+        
+        System.out.println(completeURL);
+        
+        // Build a URL object with the main endpoint, the api key and open a connection
+        URL targetUrl = new URL(completeURL);
+                
         URLConnection connection = targetUrl.openConnection();
         
         // Read the data
@@ -71,14 +86,24 @@ public class RequestHandler {
     }
     
     /** 
-     * Fetches the list of movies for a specific year
+     * Fetches the list of movies released since a specific year
      *  
-     * @param year a string representation the year the movie was released
+     * @param year a string representation the minimum year the movie was released
      * 
-     * @return  A JSON String representation of all movies from the specified year
+     * @return  A JSON String representation of all movies since the specified year
      */
-    public static String getMovies(String year) {
-        // TODO
-        return year;
+    public static String getMoviesSince(String year) {
+        // Building the parameter to use in the request
+        String[] parameter = {yearParam + year};
+        
+        String result = "";
+        
+        try {
+            result = executePost(parameter);
+        } catch (IOException ex) {
+            Logger.getLogger(RequestHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return result;
     }
 }

@@ -17,11 +17,7 @@ public class DataFetcher {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
-           String requestResult = RequestHandler.executePost("https://api.themoviedb.org/3/discover/movie");
-           System.out.println(requestResult);
-        } catch (IOException ex) {
-            Logger.getLogger(DataFetcher.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String requestResult = RequestHandler.getMoviesSince("2018");
+        System.out.println(requestResult);
     }
 }
