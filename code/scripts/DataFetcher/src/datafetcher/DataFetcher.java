@@ -3,10 +3,6 @@
  */
 package datafetcher;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author Raph
@@ -18,6 +14,7 @@ public class DataFetcher {
      */
     public static void main(String[] args) {
         String requestResult = RequestHandler.getMoviesSince("2018");
-        System.out.println(requestResult);
+        
+        DataHandler.test(requestResult);
     }
 }

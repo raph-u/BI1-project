@@ -62,7 +62,7 @@ public class RequestHandler {
             completeURL += param;
         }
         
-        System.out.println(completeURL);
+        System.out.println(completeURL + "\n");
         
         // Build a URL object with the main endpoint, the api key and open a connection
         URL targetUrl = new URL(completeURL);
