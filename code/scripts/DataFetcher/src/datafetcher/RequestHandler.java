@@ -20,8 +20,10 @@ import java.util.logging.Logger;
  * @author Raph
  */
 public class RequestHandler {
-    private static String mainEndPoint = "https://api.themoviedb.org/3/discover/movie";
+    private static String mainEndPoint = "https://api.themoviedb.org/3";
+    private static String discoverMoviesEndpoint = "/discover/movie";
     private static String yearParam = "&primary_release_date.gte=";
+    private static String popularActorsEndpoint = "/person/popular";
     
     /** 
      * Fetches the apiKey from a text file located at projectFolder/apiKey.txt
@@ -44,28 +46,17 @@ public class RequestHandler {
          return content;
     }
     
+    
     /** 
-     * Performs a POST request to the specified URL
+     * Fetches the data targeted by the given url parameter
      *  
-     * @param params a string array of parameter prepended with "&". e.g. "&page=12"
+     * @param url a string representation of the URL from where data will be fetched
      * 
-     * @return  A JSON String representation of the data targeted by the specified parameters
+     * @return  A JSON String representation of the data targeted by the URL parameter
      */
-    public static String executePost(String[] params) throws IOException {
-        // Get the API key
-        String apiKey = getApiKey();
-        
-        String completeURL = mainEndPoint + "?api_key=" + apiKey;
-        
-        // Append request parameters to the final URL
-        for (String param: params) {
-            completeURL += param;
-        }
-        
-        System.out.println(completeURL + "\n");
-        
+    public static String fetch(String url) throws IOException {
         // Build a URL object with the main endpoint, the api key and open a connection
-        URL targetUrl = new URL(completeURL);
+        URL targetUrl = new URL(url);
                 
         URLConnection connection = targetUrl.openConnection();
         
@@ -86,6 +77,64 @@ public class RequestHandler {
     }
     
     /** 
+     * Performs a POST request to the specified URL using parameters
+     *  
+     * @param params a string array of parameter prepended with "&". e.g. "&page=12"
+     * 
+     * @return  A JSON String representation of the data targeted by the specified parameters
+     */
+    public static String executePost(String endpoint, String[] params) throws IOException {
+        // Get the API key
+        String apiKey = getApiKey();
+        
+        String completeURL = mainEndPoint + endpoint + "?api_key=" + apiKey;
+        
+        // Append request parameters to the final URL
+        for (String param: params) {
+            completeURL += param;
+        }
+        
+        System.out.println(completeURL + "\n");
+        
+        return fetch(completeURL);
+    }
+    
+    /** 
+     * Performs a POST request to the specified URL without parameters
+     * 
+     * @return  A JSON String representation of the data targeted by the URL
+     * 
+     */
+    public static String executePost(String endpoint) throws IOException {
+        // Get the API key
+        String apiKey = getApiKey();
+        
+        String completeURL = mainEndPoint + endpoint + "?api_key=" + apiKey;
+        
+        System.out.println(completeURL + "\n");
+        
+        return fetch(completeURL);
+    }
+    
+    /** 
+     * Fetches a list of popular actors sorted by popularity (default mode)
+     *  
+     * @return  A JSON String representation of the most popular actors according to TMDB
+     * 
+     */
+    public static String getPopularActors() {
+         String result = "";
+        
+        try {
+            result = executePost(popularActorsEndpoint);
+        } catch (IOException ex) {
+            Logger.getLogger(RequestHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return result;
+    }
+    
+    /** 
      * Fetches the list of movies released since a specific year
      *  
      * @param year a string representation the minimum year the movie was released
@@ -99,7 +148,7 @@ public class RequestHandler {
         String result = "";
         
         try {
-            result = executePost(parameter);
+            result = executePost(discoverMoviesEndpoint, parameter);
         } catch (IOException ex) {
             Logger.getLogger(RequestHandler.class.getName()).log(Level.SEVERE, null, ex);
         }

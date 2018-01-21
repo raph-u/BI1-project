@@ -11,7 +11,22 @@ import org.json.*;
  */
 public class DataHandler {
     
-// Test method
+    public static void saveActors(String json) {
+        JSONObject moviesData = new JSONObject(json);
+        
+        JSONArray actorList = moviesData.getJSONArray("results");
+        
+        for (int i = 0; i < actorList.length(); i++) {
+            JSONObject actor = (JSONObject) actorList.get(i);
+            
+            String name = actor.getString("name");
+            
+            System.out.println(name);
+        }    
+        System.out.println("\n___________\n");
+    }
+    
+    // Test method
     public static void test(String json) {
         JSONObject moviesData = new JSONObject(json);
         
