@@ -26,6 +26,21 @@ public class DataHandler {
         System.out.println("\n___________\n");
     }
     
+    public static void saveGenres(String json) {
+        JSONObject moviesData = new JSONObject(json);
+        
+        JSONArray genreList = moviesData.getJSONArray("genres");
+        
+        for (int i = 0; i < genreList.length(); i++) {
+            JSONObject genre = (JSONObject) genreList.get(i);
+            
+            String name = genre.getString("name");
+            
+            System.out.println(name);
+        }    
+        System.out.println("\n___________\n");
+    }
+    
     // Test method
     public static void test(String json) {
         JSONObject moviesData = new JSONObject(json);

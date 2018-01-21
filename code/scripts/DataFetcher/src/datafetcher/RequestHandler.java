@@ -20,10 +20,11 @@ import java.util.logging.Logger;
  * @author Raph
  */
 public class RequestHandler {
-    private static String mainEndPoint = "https://api.themoviedb.org/3";
-    private static String discoverMoviesEndpoint = "/discover/movie";
-    private static String yearParam = "&primary_release_date.gte=";
-    private static String popularActorsEndpoint = "/person/popular";
+    private static final String mainEndPoint = "https://api.themoviedb.org/3";
+    private static final String discoverMoviesEndpoint = "/discover/movie";
+    private static final String yearParam = "&primary_release_date.gte=";
+    private static final String popularActorsEndpoint = "/person/popular";
+    private static final String movieGenresEndpoint = "/genre/movie/list";
     
     /** 
      * Fetches the apiKey from a text file located at projectFolder/apiKey.txt
@@ -135,20 +136,16 @@ public class RequestHandler {
     }
     
     /** 
-     * Fetches the list of movies released since a specific year
+     * Fetches the list of movies genres available on TMDB
      *  
-     * @param year a string representation the minimum year the movie was released
+     * @return  A JSON String representation of the list of genres available on TMDB
      * 
-     * @return  A JSON String representation of all movies since the specified year
      */
-    public static String getMoviesSince(String year) {
-        // Building the parameter to use in the request
-        String[] parameter = {yearParam + year};
-        
+    public static String getMovieGenres() {
         String result = "";
         
         try {
-            result = executePost(discoverMoviesEndpoint, parameter);
+            result = executePost(movieGenresEndpoint);
         } catch (IOException ex) {
             Logger.getLogger(RequestHandler.class.getName()).log(Level.SEVERE, null, ex);
         }

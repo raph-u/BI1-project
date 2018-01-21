@@ -13,13 +13,10 @@ public class DataFetcher {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        String requestResult = RequestHandler.getMoviesSince("2018");
-        String requestResult = RequestHandler.getPopularActors();
+//        String requestResult = RequestHandler.getPopularActors();
+//        DataHandler.saveActors(requestResult);
         
-        DataHandler.saveActors(requestResult);
-        
-//        System.out.println(requestResult);
-        
-//        DataHandler.test(requestResult);
+        String movieGenres = RequestHandler.getMovieGenres();
+        DataHandler.saveGenres(movieGenres);
     }
 }
