@@ -10,6 +10,7 @@ import org.json.*;
  * @author Raph
  */
 public class DataHandler {
+
     
     public static void saveActors(String json) {
         JSONObject moviesData = new JSONObject(json);
@@ -21,7 +22,9 @@ public class DataHandler {
             
             String name = actor.getString("name");
             
-            System.out.println(name);
+            int id = actor.getInt("id");
+            
+            System.out.println(name + " id: " + String.valueOf(id));
         }    
         System.out.println("\n___________\n");
     }
@@ -42,7 +45,7 @@ public class DataHandler {
     }
     
     // Test method
-    public static void test(String json) {
+    public static void filterActorMovies(String json) {
         JSONObject moviesData = new JSONObject(json);
         
         JSONArray movieList = moviesData.getJSONArray("results");

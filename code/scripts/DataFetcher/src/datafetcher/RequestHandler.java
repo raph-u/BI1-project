@@ -20,11 +20,16 @@ import java.util.logging.Logger;
  * @author Raph
  */
 public class RequestHandler {
+    // Endpoints
     private static final String mainEndPoint = "https://api.themoviedb.org/3";
     private static final String discoverMoviesEndpoint = "/discover/movie";
-    private static final String yearParam = "&primary_release_date.gte=";
     private static final String popularActorsEndpoint = "/person/popular";
     private static final String movieGenresEndpoint = "/genre/movie/list";
+    
+    // Parameters
+    private static final String yearParam = "&primary_release_date.gte=";
+    private static final String castingParam = "&with_cast=";
+    
     
     /** 
      * Fetches the apiKey from a text file located at projectFolder/apiKey.txt
@@ -146,6 +151,28 @@ public class RequestHandler {
         
         try {
             result = executePost(movieGenresEndpoint);
+        } catch (IOException ex) {
+            Logger.getLogger(RequestHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return result;
+    }
+    
+    /** 
+     * Fetches a list of movies featuring a specific actor
+     * 
+     * @param actorId The actor id for which movies will be fetched 
+     *  
+     * @return  A JSON String representation of the movies featuring the actor specified by parameter
+     * 
+     */
+    public static String getMoviesFeaturing(int actorId) {
+         String result = "";
+         
+         String[] parameter = {castingParam + actorId};
+        
+        try {
+            result = executePost(discoverMoviesEndpoint, parameter);
         } catch (IOException ex) {
             Logger.getLogger(RequestHandler.class.getName()).log(Level.SEVERE, null, ex);
         }

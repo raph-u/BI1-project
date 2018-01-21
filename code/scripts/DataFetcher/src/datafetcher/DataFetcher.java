@@ -16,7 +16,10 @@ public class DataFetcher {
 //        String requestResult = RequestHandler.getPopularActors();
 //        DataHandler.saveActors(requestResult);
         
-        String movieGenres = RequestHandler.getMovieGenres();
-        DataHandler.saveGenres(movieGenres);
+//        String movieGenres = RequestHandler.getMovieGenres();
+//        DataHandler.saveGenres(movieGenres);
+
+        String actorsMovie = RequestHandler.getMoviesFeaturing(90633);
+        DataHandler.filterActorMovies(actorsMovie);
     }
 }
