@@ -29,6 +29,8 @@ public class RequestHandler {
     // Parameters
     private static final String yearParam = "&primary_release_date.gte=";
     private static final String castingParam = "&with_cast=";
+    private static final String pageParam = "&page=";
+    private static final String popularityParam = "&sort_by=popularity.desc";
     
     
     /** 
@@ -51,7 +53,6 @@ public class RequestHandler {
 
          return content;
     }
-    
     
     /** 
      * Fetches the data targeted by the given url parameter
@@ -92,7 +93,6 @@ public class RequestHandler {
     public static String executePost(String endpoint, String[] params) throws IOException {
         // Get the API key
         String apiKey = getApiKey();
-        
         String completeURL = mainEndPoint + endpoint + "?api_key=" + apiKey;
         
         // Append request parameters to the final URL
@@ -168,7 +168,6 @@ public class RequestHandler {
      */
     public static String getMoviesFeaturing(int actorId) {
          String result = "";
-         
          String[] parameter = {castingParam + actorId};
         
         try {
@@ -177,6 +176,65 @@ public class RequestHandler {
             Logger.getLogger(RequestHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        return result;
+    }
+    
+    /** 
+     * Fetches the nth page from the list of movies featuring a specific actor
+     * 
+     * @param actorId The actor id for which movies will be fetched 
+     * @param pageNumber The number of the page that has to be fetched
+     *  
+     * @return  A JSON String representation of the movies featuring the actor specified by parameter
+     * 
+     */
+    public static String getMoviesFeaturing(int actorId, int pageNumber) {
+        String result = "";
+        String[] parameter = {castingParam + actorId + pageParam + pageNumber};
+
+        // Delaying API calls to avoid problems regarding TMDB limitations (4/sec)
+        try {
+            // Wait 1/4th of a second
+            Thread.sleep(250);
+
+            try {
+                result = executePost(discoverMoviesEndpoint, parameter);
+            } catch (IOException ex) {
+                Logger.getLogger(RequestHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+    
+    /** 
+     * Fetches the most popular movies featuring a specific actor
+     * 
+     * @param actorId The actor id for which movies will be fetched 
+     *  
+     * @return  A JSON String representation of the movies featuring the actor specified by parameter
+     * 
+     */
+    public static String getMostPopularMovies(int actorId) {
+        String result = "";
+        String[] parameter = {castingParam + actorId + popularityParam};
+
+        // Delaying API calls to avoid problems regarding TMDB limitations (4/sec)
+        try {
+            // Wait 1/4th of a second
+            Thread.sleep(250);
+
+            try {
+                result = executePost(discoverMoviesEndpoint, parameter);
+            } catch (IOException ex) {
+                Logger.getLogger(RequestHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         return result;
     }
 }
