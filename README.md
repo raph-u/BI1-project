@@ -1,4 +1,9 @@
 # BI1-project
-Le but de ce projet est de mettre en relation différentes informations relatives à des films.
-Cela permettrait par exemple de lister les catégories de films les plus populaires en fonction des années.
-Ou encore, lister le nombre de films d'un genre en particulier dans lequel a joué un acteur...
+Il est commun d'associer un acteur à un genre particulier de film ou d'être surpris de voir un acteur jouer dans un film dont le un genre est différent de celui ou ceux dans le/lesquels ils jouent le plus souvent.
+
+Le but de ce projet est de répondre aux questions suivantes:
+- Un acteur/une actrice a-t-il/elle forcément un genre de film "dominant" ?
+- En partant du principe que ce soit le cas, le film le plus populaire dans lequel il/elle a joué est il forcément de ce genre ? 
+
+Les données de ce projet sont récoltées via The movie DB (TMDB).
+Dernière date de récupération de données: 23.01.18

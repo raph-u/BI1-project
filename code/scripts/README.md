@@ -7,17 +7,17 @@ Classe chargée de stocker les données relative aux films et genres de films en
 ## DataFetcher.java
 Classe de base du projet. C'est en son sein qu'est déclenchée la procédure de récupération des données.
 
-## RequestHandler
+## RequestHandler.java
 Cette classe comporte les différentes méthodes qui sont chargées de lancer des requêtes vers un endpoint spécifique de l'API TMDB.
 Ces méthodes sont capables de prendre en charge différents paramètres de requête et retournent le résultat sous forme de String représentant le JSON de réponse qui contient les données d'intérêt.
 
-Les méthodes de RequestHandler attaquent principalement 3 endpoints dont les cas d'usage sont les suivant:
+Les méthodes de ```RequestHandler``` "attaquent" principalement 3 endpoints dont les cas d'usage sont les suivant:
 - récupération des genres de film
 - récupération des acteurs les plus populaire du moment
 - récupération des films
 
-## DataHandler
-Classe responsable de parser les fichiers JSON retournés par les méthodes de *RequestHandler*. C'est dans cette classe que sont effectués le filtrage et les traitements de données. Les données récupérées sont stockées dans une instance de type ```Actor```, décrite ci-dessus, de manière à pouvoir facilement les manipuler par la suite.
+## DataHandler.java
+Classe responsable de parser les fichiers JSON retournés par les méthodes de ```RequestHandler```. C'est dans cette classe que sont effectués le filtrage et les traitements de données. Les données récupérées sont stockées dans une instance de type ```Actor```, décrite ci-dessus, de manière à pouvoir facilement les manipuler par la suite.
 
 Les méthodes de cette classe permettent, en autres, de:
 - Extraire les genres de film
@@ -25,7 +25,7 @@ Les méthodes de cette classe permettent, en autres, de:
 - Calculer le nombre de film dans lequel un acteur a joué
 - Calculer le nombre d'occurence de film d'un genre particulier
 
-## DataWriter
+## DataWriter.java
 Classe chargée de créer les fichier CSV contenant les données extraites des fichiers JSON en se les procurant auprès d'instances de type ```Actor```.
 
 ## Fonctionnement général
