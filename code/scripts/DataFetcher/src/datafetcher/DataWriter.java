@@ -91,7 +91,7 @@ public class DataWriter {
             writer = new FileWriter(fileName);
             writer.append("Actor");
             writer.append(separator);
-            writer.append("Totals");
+            writer.append("movie Total");
             writer.append('\n');
             
             // Write actual file content
@@ -134,7 +134,7 @@ public class DataWriter {
             writer = new FileWriter(fileName);
             writer.append("Actor");
             writer.append(separator);
-            writer.append("Totals");
+            writer.append("Total for genre");
             writer.append(separator);
             writer.append("Most popular movie genre");
             writer.append('\n');
