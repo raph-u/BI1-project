@@ -33,13 +33,14 @@ L'API et les données à disposition sont totalement libre d'accès pour chacun 
 
 ## Résultats
 pour des raisons de visibilités, les graphiques se basent sur un nombre de 20 acteurs.
-Nombre de films par acteur et par genres
+
+#### Nombre de films par acteur et par genres
 ![Nombre de films par acteur et par genres](../figures/final/genres.PNG "Nombre de films par acteur et par genres")
 
-Nombre de film le plus populaire par acteur et par genre
+#### Nombre de film le plus populaire par acteur et par genre
 ![Nombre de film le plus populaire par acteur et par genre](../figures/final/popular.PNG "Nombre de film le plus populaire par acteur et par genre")
 
-Nombre de film le plus populaire en comparaison avec le nombre total de film par acteur
+#### Nombre de film le plus populaire en comparaison avec le nombre total de film par acteur
 ![Nombre de film le plus populaire en comparaison avec le nombre total de film par acteur](../figures/final/totals.PNG "Nombre de film le plus populaire en comparaison avec le nombre total de film par acteur")
 
 ## Conclusion
