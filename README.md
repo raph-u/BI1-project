@@ -5,5 +5,4 @@ Le but de ce projet est de répondre aux questions suivantes:
 - Un acteur/une actrice a-t-il/elle forcément un genre de film "dominant" ?
 - En partant du principe que ce soit le cas, le film le plus populaire dans lequel il/elle a joué est il forcément de ce genre ? 
 
-Les données de ce projet sont récoltées via The movie DB (TMDB).
-Dernière date de récupération de données: 23.01.18
+Les données de ce projet sont récoltées via [The movie DB (TMDB)](https://www.themoviedb.org/)

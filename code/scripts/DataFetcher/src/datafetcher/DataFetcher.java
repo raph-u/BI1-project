@@ -24,7 +24,7 @@ public class DataFetcher {
         
         // Get the actorLists
         String popularActors = RequestHandler.getPopularActors();
-        if (DataHandler.saveActors(popularActors, 5)) {
+        if (DataHandler.saveActors(popularActors, 20)) {
             // Fetch the list of movie for each actors
             for (Actor actor: DataHandler.actors) {
                 System.out.println("Fetching data for " + actor.getFullName());

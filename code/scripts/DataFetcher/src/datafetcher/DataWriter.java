@@ -23,6 +23,8 @@ public class DataWriter {
     public static void writeGenresToCSV(ArrayList<Actor> actors, String fileName) {
         FileWriter writer = null;
         String separator = ";";
+        
+        ArrayList<String> headerColumns = new ArrayList<>();
 
         try {
             // File header
@@ -34,6 +36,8 @@ public class DataWriter {
             Iterator it = DataHandler.genres.entrySet().iterator();
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry)it.next();
+                
+                headerColumns.add(pair.getValue().toString());
                 
                 writer.append(pair.getValue().toString());
                 writer.append(separator);
@@ -50,14 +54,15 @@ public class DataWriter {
                 writer.append(separator);
                 
                 // Insert the number of movies for each genre
-                it = actor.getTotalPerGenre().entrySet().iterator();
-                while (it.hasNext()) {
-                    Map.Entry pair = (Map.Entry)it.next();
-                    
-                    writer.append(pair.getValue().toString());
+                for (String genre: headerColumns) {
+                    // Does the genre exist for this actor ?
+                    if (actor.getTotalPerGenre().get(genre) != null) {
+                        // Total of movie for the genre
+                        writer.append(actor.getTotalPerGenre().get(genre).toString());
+                    } else {
+                        writer.append("0");
+                    } 
                     writer.append(separator);
-                
-                    it.remove();
                 }
                 writer.append('\n');
             }

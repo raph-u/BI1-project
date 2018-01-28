@@ -4,7 +4,7 @@ Néanmoins, voici les sources exactes dont proviennent les données ainsi que le
 
 ## Source des données
 L'intégralité des données provient de l'API TMDB.
-Dernière date de récupération: 23.01.18.
+Dernière date de récupération: 28.01.18.
 
 - Site de TMDB
 - Documentation de l'API
@@ -13,19 +13,19 @@ Dernière date de récupération: 23.01.18.
 URL:
 https://api.themoviedb.org/3/genre/movie/list?api_key=<clé de l'API>
 
-Données retournées (forma JSON):
+Données retournées (format JSON):
 
 ## Récupération des acteurs les plus populaires du moment
 URL:
 https://api.themoviedb.org/3/person/popular?api_key=<clé de l'API>&sort_by=popularity.desc
 
-Données retournées (forma JSON):
+Données retournées (format JSON):
 
 # Récupération des films associés à un acteur
 URL:
 https://api.themoviedb.org/3/discover/movie?api_key=<clé de l'API>&with_cast=<ID d'un acteur>
 
-Données retournées (forma JSON):
+Données retournées (format JSON):
 
 
 Note: il n'est pas possible de récupérer l'intégralité des films dans lequel joue un acteur en une seule requête.
