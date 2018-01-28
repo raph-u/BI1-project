@@ -27,7 +27,8 @@ Dans quelle catégorie se classe le film le plus populaire dans lequel un acteur
 
 ## Méthodes
 ### Provenance des données
-L'intégralité des données utilisées dans le cadre de ce projet provient de l'API [The movie DB](https://www.themoviedb.org/)
+L'intégralité des données utilisées dans le cadre de ce projet provient de l'API [The movie DB](https://www.themoviedb.org/).
+
 `The movie DB` est propulsé et maintenu par la communauté et met à disposition les données de plus de 300'000 films différents.
 L'API et les données à disposition sont totalement libre d'accès pour chacun mais requiert cependant la création d'un compte permettant de récupérer une clé donnant accès à l'API. Il est aussi important que le nombre de requêtes est limité à un maximum de 4 par seconde.
 
