@@ -1,4 +1,4 @@
-# Processed
+# Données traitées
 Les données générées sont stockées dans 3 fichiers CSV distincts. La liaison entre chacun d'entre-eux se fait via la champ *Acteur*.
 La classe responsable de leur génération est ```DataWriter.java```. Cette dernière possède 3 méthodes, chacune responsable de générer un fichier.
 

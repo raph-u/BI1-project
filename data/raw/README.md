@@ -1,4 +1,4 @@
-# RAW
+# Données brutes
 Etant donné que ce projet se base sur l'API de TMDB, il ne possède pas de "raw data" à proprement parler.
 Néanmoins, voici les sources exactes dont proviennent les données ainsi que leur date de récupération.
 
