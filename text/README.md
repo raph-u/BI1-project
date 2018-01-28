@@ -33,9 +33,9 @@ L'API et les données à disposition sont totalement libre d'accès pour chacun 
 
 ## Résultats
 pour des raisons de visibilités, les graphiques se basent sur un nombre de 20 acteurs.
-![Nombre de films par acteur et par genres](figures/final/genres.png "Nombre de films par acteur et par genres")
-![Nombre de film le plus populaire par acteur et par genre](figures/final/popular.png "Nombre de film le plus populaire par acteur et par genre")
-![Nombre de film le plus populaire en comparaison avec le nombre total de film par acteur](figures/final/totals.png "Nombre de film le plus populaire en comparaison avec le nombre total de film par acteur")
+![Nombre de films par acteur et par genres](../figures/final/genres.png "Nombre de films par acteur et par genres")
+![Nombre de film le plus populaire par acteur et par genre](../figures/final/popular.png "Nombre de film le plus populaire par acteur et par genre")
+![Nombre de film le plus populaire en comparaison avec le nombre total de film par acteur](../figures/final/totals.png "Nombre de film le plus populaire en comparaison avec le nombre total de film par acteur")
 
 ## Conclusion
 On remarque dans beacoup de cas que la catégorie de film la plus populaire pour un acteur n'est pas celle dans laquelle il a joué le plus de film. De plus, le nombre de films de cette catégorie est très faible en comparaison avec le nombre total de films joués par l'acteur.
